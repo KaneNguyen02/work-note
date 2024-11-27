@@ -34,6 +34,10 @@ php artisan make:request --super-domain=Admin --domain=AdminUser GetListAdminUse
 php artisan make:resource --super-domain=Admin --domain=AdminUser GetListAdminUserDetailResource
 ```
 
+## Git
+```
+git branch | grep -v "$(git branch --show-current)" | xargs git branch -D
+```
 
 
 ubuntu@dsoft-dev-link:/var/www/dev-docker docker compose exec postgres sh
@@ -72,7 +76,7 @@ tang dan, giam dan
     'user_name',
     'admin_permission', //
     'is_valid', // trang thai dang ky
-    'two_factor_auth',//
+    'is_two_factor',//
     'address',
     'status', //  xac nhan email confirm, confirmed , confirming
 
@@ -114,43 +118,6 @@ MAN HINH CAN QUAN TAM
 
 
 
-bubble	: bong bong
-event bubbling	: su kien noi bot
-artifactory	: kho luu tru artifact
-vulnerability: nhuoc diem
-
-a complete walk through	Một hướng dẫn đầy đủ (hoàn chỉnh)
-changelog	: nhat ky thay doi
-undergo	: 
-
-
-inbound	đến (nơi đầu vào)
-annotation	: ghi chu
-by the way: nhan tien	
-Handover	: 
-
-First and foremost,: dau tien va quan trong nhat	
-Project timelines, milestones, and deadlines	: timelines, cac cot moc quan trong, deadlines
-individual objects	: do vat ca nhan
-
-Let's assume we have a class named Car	
-To concatenate, or combin	
-squash	đè bẹp
-aware	hiểu, nhận thức 
-Apply Filters and Retrieve Data	: ap dung loc va truy xuat data
-Don't miss out on the latest news	: dung bo lo tin moi nhat
-unconscious competence	năng lực vô thức
-competence	
-bypass	vượt qua
-confusing	khó hiểu
-
-criteria	: tieu chuan
-strictly confidential: tuyet mat 	
-Bottleneck	ngen co chai
-evenly	: dong deu, ngang nhau
-
-
-
 
 
 Not have: IT2: a settings
@@ -165,3 +132,15 @@ Not have: IT2: a settings
 Id string or number
 - api get detail -> Fixed
 warning: api delete -> OK 
+
+
+site admin:
+    sustech-admin           => admin khon
+    sustech-refer-admin     => userAdmin 
+
+site user:
+    contractor      | tạo nguoi mua, tao plan
+    contract refer  |  xem nguoi mua, xem plan
+    power_plant     | (xem chart, xem..) -> user, chỉ được phép access vào site user
+    internal        |
+    ai              |
