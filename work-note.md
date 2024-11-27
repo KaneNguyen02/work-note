@@ -92,55 +92,28 @@ MAN HINH CAN QUAN TAM
 5. Danh sách mục đăng ký CSV
 
 
-- man hinh da doc:
- -  Quan ly admin user
-    + QA:
-    + API:
-    + 
-
- -  Quan ly position
- -  Quan ly kiem soat pin luu tru (chart)
-    + Lua chon: are name,BG name (require), pin name
- -  Quan ly BG
- -  Quan ly plan
- -  Quan ly quyen
- -  Quan ly setting tram phat dien
-
- - (Setting) Quan ly pin luu tru
-   + FEATURE: 
-      +  CURD kiem soat pin
-      +  admin only view
-
-  + API:
-      +  get list kiem soat pin
-      +  
 
 
+**PERMISSION**
+site admin user:
+
+    sustech-admin           => CRUD all view, trừ create plan, người mua 
+    sustech-refer-admin     => only read
+
+=> userAdmin < admin
+
+site user:
+    contractor          -> create plan, create người mua
+    contractor_refer    -> only read
+    power_plant         -> xem chart power_plant, list plan ... -> user, chỉ được phép access vào site user
+
+=> power_plant < contractor_refer < contractor 
+
+    internal 
+    ai   
 
 
-
-
-Not have: IT2: a settings
 
 
 ./cursor-0.42.5-build-24111460bf2loz1-x86_64.AppImage
 
-
-
-
-
-Id string or number
-- api get detail -> Fixed
-warning: api delete -> OK 
-
-
-site admin:
-    sustech-admin           => admin khon
-    sustech-refer-admin     => userAdmin 
-
-site user:
-    contractor      | tạo nguoi mua, tao plan
-    contract refer  |  xem nguoi mua, xem plan
-    power_plant     | (xem chart, xem..) -> user, chỉ được phép access vào site user
-    internal        |
-    ai              |
