@@ -84,6 +84,19 @@ tang dan, giam dan
     'updated_at',
 
 
+    {
+      "id": 1,
+      "email": "admin-sustech@yopmail.com",
+      "user_name": "Sustech Admin 1",
+      "admin_permission": "管理",
+      "is_valid": true,
+      "is_two_factor": true,
+      "status": "確認済み",
+      "updated_by_name": "Sustech Admin 1",
+      "updated_at": "2024-11-26T10:33:49.000000Z"
+    }
+
+
 MAN HINH CAN QUAN TAM
 1. A (Cài đặt) Quản trị quản lý người dùng trang web
 2. A Cài đặt (quản lý nhà máy điện)
@@ -116,4 +129,32 @@ site user:
 
 
 ./cursor-0.42.5-build-24111460bf2loz1-x86_64.AppImage
+
+
+
+## SQL
+TO_CHAR(updated_content_at, 'YYYY-MM-DD HH24:MI'): Chuyển đổi kiểu dữ liệu timestamp của cột thành chuỗi định dạng cụ thể.
+
+DISTINCT ON: Lấy các bản ghi duy nhất dựa trên giá trị định dạng của 
+orderBy: Sắp xếp các bản ghi theo
+$column + INTERVAL '9 hour': Cộng thêm 9 giờ vào giá trị của cột $column để điều chỉnh múi giờ (giả định hệ thống lưu UTC nhưng cần lọc theo múi giờ khác).
+ILIKE: So sánh không phân biệt chữ hoa/thường với chuỗi con %$value%. `%\\`
+
+in_array($column, User::COLUMN_NOT_STRING) -> return true / false
+
+
+$this->model = $this->model->from($subQuery)->withTrashed()
+    ->orderByRaw($column . ' ASC NULLS FIRST, company_name COLLATE "ja_JP.utf8" ASC, user_name COLLATE "ja_JP.utf8" ASC, email COLLATE "ja_JP.utf8" ASC');
+
+    $this->model->from($subQuery):
+        Thay thế query gốc bằng subQuery. subQuery được xác định trước đó (tùy thuộc vào $column là updated_content_at hay không).
+        from() cho phép sử dụng một query con (subQuery) làm nguồn dữ liệu.
+
+
+    withTrashed(): Bao gồm cả các bản ghi đã bị "soft deleted" 
+    orderByRaw(): Thực hiện sắp xếp bằng câu SQL thô, cho phép kiểm soát chi tiết thứ tự và ưu tiên.
+    $column . ' ASC NULLS FIRST':
+
+    Sắp xếp cột $column theo thứ tự tăng dần (ASC).
+    `NULLS FIRST`: Các giá trị NULL được ưu tiên trước các giá trị khác (thường dùng trong PostgreSQL).
 
