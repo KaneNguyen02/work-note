@@ -34,9 +34,17 @@ php artisan make:request --super-domain=Admin --domain=AdminUser GetListAdminUse
 php artisan make:resource --super-domain=Admin --domain=AdminUser GetListAdminUserDetailResource
 ```
 
+```
+art db:seed --class=User2AddRoleSeeder
+```
+
 ## Git
 ```
 git branch | grep -v "$(git branch --show-current)" | xargs git branch -D
+```
+
+```
+git pull --rebase
 ```
 
 
@@ -106,24 +114,6 @@ MAN HINH CAN QUAN TAM
 
 
 
-
-**PERMISSION**
-site admin user:
-
-    sustech-admin           => CRUD all view, trừ create plan, người mua 
-    sustech-refer-admin     => only read
-
-=> userAdmin < admin
-
-site user:
-    contractor          -> create plan, create người mua
-    contractor_refer    -> only read
-    power_plant         -> xem chart power_plant, list plan ... -> user, chỉ được phép access vào site user
-
-=> power_plant < contractor_refer < contractor 
-
-    internal 
-    ai   
 
 
 
