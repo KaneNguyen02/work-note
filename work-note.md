@@ -115,8 +115,28 @@ MAN HINH CAN QUAN TAM
 
 
 
+**PERMISSION**
+site admin user:
+
+    sustech-admin           => CRUD all view, trừ create plan, người mua 
+    sustech-refer-admin     => only read
+
+=> userAdmin < admin
+
+site user:
+    contractor          -> create plan, create người mua
+    contractor_refer    -> only read
+    power_plant (tram phat dien)         -> xem chart power_plant, list plan ... -> user, chỉ được phép access vào site user
+
+=> power_plant < contractor_refer < contractor 
+
+    internal 
+    ai   
 
 
+**LOGIN ELIC POWER**
+"transmission_provider_code": Nếu power_contract_permission là true, bắt buộc phải có giá trị.
+"occto_password": Tương tự với logic phụ thuộc vào power_contract_permission.
 
 ./cursor-0.42.5-build-24111460bf2loz1-x86_64.AppImage
 
@@ -148,3 +168,14 @@ $this->model = $this->model->from($subQuery)->withTrashed()
     Sắp xếp cột $column theo thứ tự tăng dần (ASC).
     `NULLS FIRST`: Các giá trị NULL được ưu tiên trước các giá trị khác (thường dùng trong PostgreSQL).
 
+
+isset(mixed $var): bool
+    Trả về true nếu biến được khởi tạo và không phải là null.
+    Trả về false nếu biến chưa được khởi tạo hoặc có giá trị null.
+
+
+unset($dataUser['occto_password']):
+    Xóa khóa 'occto_password' và giá trị tương ứng khỏi mảng $dataUser.
+    Sau khi xóa, mảng $dataUser sẽ không chứa khóa 'occto_password'.
+
+$user->roles()->detach(): xoa role cua $user
