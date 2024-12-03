@@ -38,6 +38,14 @@ php artisan make:resource --super-domain=Admin --domain=AdminUser GetListAdminUs
 art db:seed --class=User2AddRoleSeeder
 ```
 
+## DB 
+
+CREATE COLLATION pg_catalog."ja_JP.utf8" (
+   PROVIDER = libc,
+   LC_COLLATE = "ja_JP.UTF-8",
+   LC_CTYPE = "ja_JP.UTF-8"
+);
+
 ## Git
 ```
 git branch | grep -v "$(git branch --show-current)" | xargs git branch -D
