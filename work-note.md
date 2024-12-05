@@ -38,6 +38,10 @@ php artisan make:resource --super-domain=Admin --domain=AdminUser GetListAdminUs
 art db:seed --class=User2AddRoleSeeder
 ```
 
+```
+art migrate --path=/database/migrations/2024_11_30_181352_create_batteries_tbl.php
+```
+
 ## Git
 ```
 git branch | grep -v "$(git branch --show-current)" | xargs git branch -D
@@ -179,3 +183,5 @@ unset($dataUser['occto_password']):
     Sau khi xóa, mảng $dataUser sẽ không chứa khóa 'occto_password'.
 
 $user->roles()->detach(): xoa role cua $user
+
+Str::camel('work_note') -> chuyen text snake thanh Camle case vd: work_note -> workNote
