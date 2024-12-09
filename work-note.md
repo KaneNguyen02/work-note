@@ -22,24 +22,16 @@ Inline `code` has `back-ticks around` it.
 
 ## Command
 ```
-php artisan make:controller --super-domain=Admin --domain=AdminUser GetListAdminUserDetailController
+php artisan make:controller --super-domain=AdminV2 --domain=Common PowerPlantCommonController
 ```
 ```
-php artisan make:action --super-domain=Admin --domain=AdminUser GetListAdminUserDetailAction
+php artisan make:action --super-domain=AdminV2 --domain=Common PowerPlantCommonAction
 ```
 ```
-php artisan make:request --super-domain=Admin --domain=AdminUser GetListAdminUserDetailRequest 
+php artisan make:request --super-domain=AdminV2 --domain=Common PowerPlantCommonRequest 
 ```
 ```
-php artisan make:resource --super-domain=Admin --domain=AdminUser GetListAdminUserDetailResource
-```
-
-```
-art db:seed --class=User2AddRoleSeeder
-```
-
-```
-art migrate --path=/database/migrations/2024_11_30_181352_create_batteries_tbl.php
+php artisan make:resource --super-domain=AdminV2 --domain=Common PowerPlantCommonResource
 ```
 
 ## Git
@@ -172,16 +164,3 @@ $this->model = $this->model->from($subQuery)->withTrashed()
     Sắp xếp cột $column theo thứ tự tăng dần (ASC).
     `NULLS FIRST`: Các giá trị NULL được ưu tiên trước các giá trị khác (thường dùng trong PostgreSQL).
 
-
-isset(mixed $var): bool
-    Trả về true nếu biến được khởi tạo và không phải là null.
-    Trả về false nếu biến chưa được khởi tạo hoặc có giá trị null.
-
-
-unset($dataUser['occto_password']):
-    Xóa khóa 'occto_password' và giá trị tương ứng khỏi mảng $dataUser.
-    Sau khi xóa, mảng $dataUser sẽ không chứa khóa 'occto_password'.
-
-$user->roles()->detach(): xoa role cua $user
-
-Str::camel('work_note') -> chuyen text snake thanh Camle case vd: work_note -> workNote
